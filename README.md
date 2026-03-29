@@ -45,10 +45,10 @@
 ### 2. Installation
 ```bash
 # Clone the repository
-git clone https://github.com/ha-re-ram/weatherapp.git
+git clone https://github.com/ha-re-ram/SkyCast.git
 
 # Navigate to the folder
-cd weatherapp
+cd SkyCast
 
 # Open the app
 open index.html
