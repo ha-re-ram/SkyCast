@@ -1,48 +1,205 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather App</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>SkyCast - Professional Weather Forecast & Real-time Updates</title>
+    <meta name="title" content="SkyCast - Professional Weather Forecast & Real-time Updates">
+    <meta name="description" content="Get accurate real-time weather updates, 5-day forecasts, and detailed atmospheric data with SkyCast. Your ultimate professional weather companion.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hareramkushwaha.com.np/SkyCast/">
+    <meta property="og:title" content="SkyCast - Professional Weather Forecast">
+    <meta property="og:description" content="Get accurate real-time weather updates, 5-day forecasts, and detailed atmospheric data.">
+    <meta property="og:image" content="https://hareramkushwaha.com.np/SkyCast/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hareramkushwaha.com.np/SkyCast/">
+    <meta property="twitter:title" content="SkyCast - Professional Weather Forecast">
+    <meta property="twitter:description" content="Get accurate real-time weather updates, 5-day forecasts, and detailed atmospheric data.">
+    <meta property="twitter:image" content="https://hareramkushwaha.com.np/SkyCast/og-image.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles & Assets -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3498db">
 </head>
-<body>
-  <div class="header">
-    <h1>Weather App</h1>
-    <button id="mobile-menu-toggle">&#9776;</button>
-    <button id="theme-toggle">Toggle Theme</button>
-  </div>
+<body class="light-mode">
+    <div class="app-background" id="app-bg"></div>
+    
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-icon">☁️</span>
+            <h1>SkyCast</h1>
+        </div>
+        <nav class="nav-links desktop-only">
+            <a href="#about-section" id="about-link" class="nav-item">About Developer</a>
+        </nav>
+        <div class="nav-actions">
+            <button id="theme-toggle" class="icon-btn" title="Toggle Theme">
+                <span class="theme-icon">🌙</span>
+            </button>
+            <button id="mobile-menu-toggle" class="icon-btn mobile-only" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
 
-  <div class="menu" id="menu">
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </div>
+    <main class="container">
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="search-box">
+                <form id="location-form">
+                    <input type="text" id="location-input" placeholder="Search city (e.g. London, Tokyo)..." autocomplete="off">
+                    <button type="submit" class="search-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                </form>
+                <button id="use-location" class="location-btn" title="Use current location">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </button>
+            </div>
+            <div id="recent-searches" class="recent-searches">
+                <!-- Dynamically populated -->
+            </div>
+        </section>
 
-  <div class="main">
-    <div class="weather-container">
-      <form id="location-form">
-        <input type="text" id="location-input" placeholder="Enter location...">
-        <button type="submit">Search</button>
-        <button type="button" id="use-location">Use My Location</button>
-      </form>
-      <div id="loading" class="hidden">Loading...</div>
-      <div id="weather-info" class="hidden">
-        <h2 id="location-name"></h2>
-        <img id="weather-icon" src="" alt="Weather Icon">
-        <p id="temperature"></p>
-        <p id="description"></p>
-        <p id="feels-like"></p>
-        <p id="temp-range"></p>
-        <p id="humidity"></p>
-        <p id="wind-speed"></p>
-      </div>
-    </div>
-  </div>
+        <!-- Weather Display Section -->
+        <section id="weather-display" class="weather-display hidden">
+            <div class="current-weather-card glass">
+                <div class="weather-header">
+                    <div class="location-info">
+                        <h2 id="location-name">City Name</h2>
+                        <p id="current-date">Sunday, 29 March</p>
+                    </div>
+                    <div class="weather-status">
+                        <img id="weather-icon" src="" alt="Weather">
+                        <span id="description" class="weather-desc">Cloudy</span>
+                    </div>
+                </div>
+                
+                <div class="weather-main">
+                    <div class="temp-display">
+                        <span id="temperature">24</span><span class="unit">°C</span>
+                    </div>
+                    <div class="extra-info">
+                        <div class="info-item">
+                            <span class="label">Feels like</span>
+                            <span id="feels-like" class="value">26°C</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Min/Max</span>
+                            <span id="temp-range" class="value">22°C / 26°C</span>
+                        </div>
+                    </div>
+                </div>
 
-  <script src="script.js"></script>
+                <div class="weather-details-grid">
+                    <div class="detail-card glass-inner">
+                        <div class="detail-icon">💧</div>
+                        <div class="detail-content">
+                            <span class="label">Humidity</span>
+                            <span id="humidity" class="value">64%</span>
+                        </div>
+                    </div>
+                    <div class="detail-card glass-inner">
+                        <div class="detail-icon">💨</div>
+                        <div class="detail-content">
+                            <span class="label">Wind Speed</span>
+                            <span id="wind-speed" class="value">12 km/h</span>
+                        </div>
+                    </div>
+                    <div class="detail-card glass-inner">
+                        <div class="detail-icon">🌡️</div>
+                        <div class="detail-content">
+                            <span class="label">Pressure</span>
+                            <span id="pressure" class="value">1012 hPa</span>
+                        </div>
+                    </div>
+                    <div class="detail-card glass-inner">
+                        <div class="detail-icon">👁️</div>
+                        <div class="detail-content">
+                            <span class="label">Visibility</span>
+                            <span id="visibility" class="value">10 km</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forecast Section -->
+            <div class="forecast-section">
+                <h3>5-Day Forecast</h3>
+                <div id="forecast-container" class="forecast-grid">
+                    <!-- Dynamically populated -->
+                    <div class="forecast-skeleton glass-inner"></div>
+                    <div class="forecast-skeleton glass-inner"></div>
+                    <div class="forecast-skeleton glass-inner"></div>
+                    <div class="forecast-skeleton glass-inner"></div>
+                    <div class="forecast-skeleton glass-inner"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-section" class="about-section glass hidden">
+            <button id="close-about" class="close-btn">&times;</button>
+            <div class="about-grid">
+                <div class="about-info">
+                    <h2>About the Developer</h2>
+                    <p>Skilled software developer passionate about building modern, high-performance web applications with a focus on user experience and clean code.</p>
+                    <div class="social-grid">
+                        <a href="https://linkedin.com/in/ha-re-ram" target="_blank" class="social-link glass-inner">
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/ha-re-ram" target="_blank" class="social-link glass-inner">
+                            <span>GitHub</span>
+                        </a>
+                        <a href="mailto:hareramkushwaha054@gmail.com" class="social-link glass-inner">
+                            <span>Email</span>
+                        </a>
+                        <a href="https://wa.me/918340318593" target="_blank" class="social-link glass-inner">
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading & Error States -->
+        <div id="loading" class="state-container hidden">
+            <div class="loader"></div>
+            <p>Gathering atmospheric data...</p>
+        </div>
+
+        <div id="error-state" class="state-container hidden">
+            <div class="error-icon">⚠️</div>
+            <p id="error-message">Location not found. Please try again.</p>
+        </div>
+
+        <!-- Initial State -->
+        <section id="initial-state" class="state-container">
+            <div class="hero-icon">🌤️</div>
+            <h2>Discover Your Weather</h2>
+            <p>Enter a city name or use your location to get started.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 SkyCast Weather Pro. Developed by <a href="https://github.com/ha-re-ram" target="_blank" class="author-link">Ha Re Ram</a>.</p>
+        <p class="data-source">Data provided by OpenWeatherMap API</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hareramkushwaha.com.np/SkyCast/sitemap.xml

@@ -1,0 +1,21 @@
+{
+  "name": "SkyCast - Professional Weather Forecast",
+  "short_name": "SkyCast",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#3498db",
+  "description": "Professional real-time weather updates and 5-day forecasts.",
+  "icons": [
+    {
+      "src": "https://via.placeholder.com/192.png?text=SC",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://via.placeholder.com/512.png?text=SC",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
