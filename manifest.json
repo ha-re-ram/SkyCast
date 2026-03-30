@@ -8,12 +8,12 @@
   "description": "Professional real-time weather updates and 5-day forecasts.",
   "icons": [
     {
-      "src": "https://via.placeholder.com/192.png?text=SC",
+      "src": "banner.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://via.placeholder.com/512.png?text=SC",
+      "src": "banner.png",
       "sizes": "512x512",
       "type": "image/png"
     }

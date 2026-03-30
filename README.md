@@ -7,6 +7,13 @@
 
 **SkyCast** is a professional, high-performance weather application built in **2024** to provide accurate, real-time weather updates and 5-day forecasts. It features a modern **Glassmorphism UI** that dynamically adapts its aesthetics based on current atmospheric conditions.
 
+---
+
+## 🖼️ Preview
+![SkyCast Banner](banner.png)
+
+---
+
 ## 🚀 Live Demo
 > **Check out the project live**: [SkyCast Weather App](https://hareramkushwaha.com.np/SkyCast/)
 
